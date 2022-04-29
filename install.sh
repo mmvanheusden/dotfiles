@@ -31,6 +31,7 @@ cd ..
 rm -rf shell-color-scripts
 
 echo "Downloading and moving the Konsole color theme..."
+rm -f ./github_dark.colorscheme
 wget -v https://raw.githubusercontent.com/projekt0n/github-nvim-theme/main/terminal/konsole/github_dark.colorscheme
 mv -v ./github_dark.colorscheme ~/.local/share/konsole/dark.colorscheme
 
