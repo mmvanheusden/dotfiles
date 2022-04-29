@@ -8,14 +8,15 @@ else
 fi
 
 echo "Updating the system..."
-sudo dnf update -y
+#sudo dnf update -y
 
 echo "Installing dependencies..."
-sudo dnf install konsole neofetch fish exa git make cmake cpp starship #-y
+sudo dnf install konsole neofetch fish exa git make cmake cpp starship -y
 
 echo "Installing fonts..."
 cd fonts
-sudo cp -v *.otf /usr/share/fonts/firacode
+sudo mkdir -p /usr/share/fonts/firacode
+sudo cp -v *.otf /usr/share/fonts/firacode/
 cd ..
 
 echo "Cloning shell-color-scripts..."
@@ -34,12 +35,15 @@ wget -v https://raw.githubusercontent.com/projekt0n/github-nvim-theme/main/termi
 mv -v ./github_dark.colorscheme ~/.local/share/konsole/dark.colorscheme
 
 echo "Copying the fish config file..."
+touch ~/.config/fish/config.fish
 cp -v ./config/config.fish ~/.config/fish/config.fish
 
 echo "Copying the starship config file..."
+touch ~/.config/starship.toml
 cp -v ./config/starship.toml ~/.config/starship.toml
 
 echo "Copying the Konsole config file..."
+touch ~/.local/share/konsole/Fish.profile
 cp -v ./config/Fish.profile ~/.local/share/konsole/Fish.profile
 
 neofetch
