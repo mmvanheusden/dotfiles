@@ -1,6 +1,6 @@
 [Appearance]
-ColorScheme=dark
-Font=FiraCode Nerd Font Mono,11,-1,5,25,0,0,0,0,0,Light
+ColorScheme=Breeze
+Font=FiraMono Nerd Font,11,-1,5,50,0,0,0,0,0
 
 [General]
 Command=/usr/bin/fish

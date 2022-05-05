@@ -1,52 +1,78 @@
+#!/bin/bash
 set -e
 
-if which plasma-systemmonitor && which dnf; then
-  echo "Detected Fedora"
-else
-  echo "ur on the wrong distro dumbass"
+if ! [ -x "$(command -v dnf)" ]; then
+  echo 'Error: not using fedora.' >&2
   exit 1
 fi
 
-echo "Updating the system..."
+echo -e "\nUpdating the system..."
+#temporarily disabled because german wifi is dogshit and i am too lazy to update my laptop
 #sudo dnf update -y
+sleep 2
 
-echo "Installing dependencies..."
-sudo dnf install konsole neofetch fish exa git make cmake cpp starship -y
+echo -e "\nInstalling dependencies..."
+sudo dnf install konsole fish exa git make cmake cpp -y
+sleep 2
 
-echo "Installing fonts..."
+echo -e "\nInstalling fonts..."
 cd fonts
-sudo mkdir -p /usr/share/fonts/firacode
-sudo cp -v *.otf /usr/share/fonts/firacode/
+sudo mkdir -p /usr/share/fonts/firamono
+sudo cp ./*.otf /usr/share/fonts/firamono/
 cd ..
+sleep 2
 
-echo "Cloning shell-color-scripts..."
-git clone https://gitlab.com/dwt1/shell-color-scripts.git
+echo -e "\nCloning shell-color-scripts..."
+git clone https://gitlab.com/dwt1/shell-color-scripts.git -q
 cd shell-color-scripts
+sleep 2
 
-echo "Compiling and installing shell-color-scripts..."
-sudo make install
+echo -e "\nCompiling and installing shell-color-scripts..."
+sudo make -s install
+sleep 2
 
-echo "removing the repository "
+echo -e "\nremoving the repository "
 cd ..
 rm -rf shell-color-scripts
+sleep 2
 
-echo "Downloading and moving the Konsole color theme..."
+
+echo -e "\nInstalling the Starship prompt..."
+curl -sS https://starship.rs/install.sh | sh -s -- -y > /dev/null
+sleep 2
+
+echo -e "\nInitializing the fish config..."
+fish -c exit > /dev/null
+sleep 2
+
+echo -e "\nAdding asteriks to the sudo prompt..."
+# This appends "Defaults   pwfeedback" to the sudoers file so cool asteriks are displayed when typing your password
+echo -e "\nDefaults   pwfeedback" | sudo tee -a /etc/sudoers > /dev/null
+sleep 2
+
+echo -e "\nMaking DNF faster..."
+echo -e "\nfastestmirror=True\nmax_parallel_downloads=10\ndefaultyes=True" | sudo tee -a /etc/dnf/dnf.conf > /dev/null
+sleep 2
+
+echo -e "\nDownloading and moving the Konsole color theme..."
 rm -f ./github_dark.colorscheme
-wget -v https://raw.githubusercontent.com/projekt0n/github-nvim-theme/main/terminal/konsole/github_dark.colorscheme
-mv -v ./github_dark.colorscheme ~/.local/share/konsole/dark.colorscheme
+wget https://raw.githubusercontent.com/projekt0n/github-nvim-theme/main/terminal/konsole/github_dark.colorscheme -q --show-progress
+mv ./github_dark.colorscheme ~/.local/share/konsole/dark.colorscheme
+sleep 2
 
-echo "Copying the fish config file..."
+echo -e "\nCopying the fish config file..."
 touch ~/.config/fish/config.fish
-cp -v ./config/config.fish ~/.config/fish/config.fish
+cp ./config/config.fish ~/.config/fish/config.fish
+sleep 2
 
-echo "Copying the starship config file..."
+echo -e "\nCopying the starship config file..."
 touch ~/.config/starship.toml
-cp -v ./config/starship.toml ~/.config/starship.toml
+cp ./config/starship.toml ~/.config/starship.toml
+sleep 2
 
-echo "Copying the Konsole config file..."
+echo -e "\nCopying the Konsole config file..."
 touch ~/.local/share/konsole/Fish.profile
-cp -v ./config/Fish.profile ~/.local/share/konsole/Fish.profile
+cp ./config/Fish.profile ~/.local/share/konsole/Fish.profile
+sleep 2
 
-neofetch
-
-echo "Please set the fish profile as the default profile in the Konsole settings!"
+echo -e "\nPlease restart Konsole and set the fish profile as the default profile in the Konsole settings!"

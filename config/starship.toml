@@ -1,151 +1,71 @@
-# Inserts a blank line between shell prompts
-add_newline = false
+right_format = """
+$memory_usage
+"""
 
-# Replace the "❯" symbol in the prompt with "➜"
-#[character] # The name of the module we are configuring is "character"
-#success_symbol = "[➜](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
+format = """ \
+[](#33658A)\
+[\uf120 ](bg:#33658A)\
+[](bg:#FF9248 fg:#33658A)\
+[ \uf07b ](bg:#FF9248 fg:#000000)\
+$directory\
+[](fg:#FF9248 bg:#FFEB95)\
+$git_branch\
+$git_status\
+[](fg:#FFEB95 bg:#33658A)\
+$nodejs\
+$rust\
+$cmd_duration\
+[  ](fg:#33658A)\
+"""
 
-# Disable the package module, hiding it from the prompt completely
-[package]
-disabled = true
+[directory]
+style = "bg:#FF9248 fg:#000000"
+format = "[$path ]($style)"
+truncation_length = 4
+truncate_to_repo = false
+truncation_symbol = "../"
 
-[aws]
-format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
-
-[cmake]
-format = '\[[$symbol($version)]($style)\]'
-
-[cmd_duration]
-format = '\[[⏱ $duration]($style)\]'
-
-[cobol]
-format = '\[[$symbol($version)]($style)\]'
-
-[conda]
-format = '\[[$symbol$environment]($style)\]'
-
-[crystal]
-format = '\[[$symbol($version)]($style)\]'
-
-[dart]
-format = '\[[$symbol($version)]($style)\]'
-
-[deno]
-format = '\[[$symbol($version)]($style)\]'
-
-[docker_context]
-format = '\[[$symbol$context]($style)\]'
-
-[dotnet]
-format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
-
-[elixir]
-format = '\[[$symbol($version \(OTP $otp_version\))]($style)\]'
-
-[elm]
-format = '\[[$symbol($version)]($style)\]'
-
-[erlang]
-format = '\[[$symbol($version)]($style)\]'
-
-[gcloud]
-format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documents" = "Documents  "
+"Downloads" = "Downloads  "
+"Music" = "Music  "
+"Pictures" = "Pictures "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = "  "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important  " = "  "
 
 [git_branch]
-format = '\[[$symbol$branch]($style)\]'
+symbol = " "
+style = "bg:#FFEB95 fg:#000000"
+format = '[[ $symbol $branch ](bg:#FFEB95 fg:000000)]($style)'
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style))'
-
-[golang]
-format = '\[[$symbol($version)]($style)\]'
-
-[helm]
-format = '\[[$symbol($version)]($style)\]'
-
-[hg_branch]
-format = '\[[$symbol$branch]($style)\]'
-
-[java]
-format = '\[[$symbol($version)]($style)\]'
-
-[julia]
-format = '\[[$symbol($version)]($style)\]'
-
-[kotlin]
-format = '\[[$symbol($version)]($style)\]'
-
-[kubernetes]
-format = '\[[$symbol$context( \($namespace\))]($style)\]'
-
-[lua]
-format = '\[[$symbol($version)]($style)\]'
-
-[memory_usage]
-format = '\[$symbol[$ram( | $swap)]($style)\]'
-
-[nim]
-format = '\[[$symbol($version)]($style)\]'
-
-[nix_shell]
-format = '\[[$symbol$state( \($name\))]($style)\]'
+style = "bg:#FFEB95"
+format = '[[($all_status$ahead_behind )](bg:#FFEB95 fg:#000000)]($style)'
 
 [nodejs]
-format = '\[[$symbol($version)]($style)\]'
-
-[ocaml]
-format = '\[[$symbol($version)(\($switch_indicator$switch_name\))]($style)\]'
-
-[openstack]
-format = '\[[$symbol$cloud(\($project\))]($style)\]'
-
-[perl]
-format = '\[[$symbol($version)]($style)\]'
-
-[php]
-format = '\[[$symbol($version)]($style)\]'
-
-[pulumi]
-format = '\[[$symbol$stack]($style)\]'
-
-[purescript]
-format = '\[[$symbol($version)]($style)\]'
-
-[python]
-format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
-
-[red]
-format = '\[[$symbol($version)]($style)\]'
-
-[ruby]
-format = '\[[$symbol($version)]($style)\]'
+symbol = ""
+style = "bg:#86BBD8"
+format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 
 [rust]
-format = '\[[$symbol($version)]($style)\]'
+symbol = ""
+style = "bg:#86BBD8"
+format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 
-[scala]
-format = '\[[$symbol($version)]($style)\]'
+[cmd_duration]
+min_time = 0
+style = "bg:#33658A"
+show_milliseconds = false
+format = "[[ \ufa1e$duration](bg:#33658A)]($style)"
 
-[sudo]
-format = '\[[as $symbol]\]'
-
-[swift]
-format = '\[[$symbol($version)]($style)\]'
-
-[terraform]
-format = '\[[$symbol$workspace]($style)\]'
-
-[time]
-format = '\[[$time]($style)\]'
-
-[username]
-format = '\[[$user]($style)\]'
-
-[vagrant]
-format = '\[[$symbol($version)]($style)\]'
-
-[vlang]
-format = '\[[$symbol($version)]($style)\]'
-
-[zig]
-format = '\[[$symbol($version)]($style)\]'
+[memory_usage]
+disabled = false
+threshold = 0
+symbol = " "
+style = "dimmed green"
+format = "[ RAM usage: $ram]($style)"
