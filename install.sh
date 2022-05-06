@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -e
 
 if ! [ -x "$(command -v dnf)" ]; then
@@ -54,11 +55,6 @@ echo -e "\nMaking DNF faster..."
 echo -e "\nfastestmirror=True\nmax_parallel_downloads=10\ndefaultyes=True" | sudo tee -a /etc/dnf/dnf.conf > /dev/null
 sleep 2
 
-echo -e "\nDownloading and moving the Konsole color theme..."
-rm -f ./github_dark.colorscheme
-wget https://raw.githubusercontent.com/projekt0n/github-nvim-theme/main/terminal/konsole/github_dark.colorscheme -q --show-progress
-mv ./github_dark.colorscheme ~/.local/share/konsole/dark.colorscheme
-sleep 2
 
 echo -e "\nCopying the fish config file..."
 touch ~/.config/fish/config.fish
