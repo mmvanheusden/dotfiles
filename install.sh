@@ -67,6 +67,7 @@ cp ./config/starship.toml ~/.config/starship.toml
 sleep 2
 
 echo -e "\nCopying the Konsole config file..."
+sudo mkdir -p ~/.local/share/konsole/
 touch ~/.local/share/konsole/Fish.profile
 cp ./config/Fish.profile ~/.local/share/konsole/Fish.profile
 sleep 2
