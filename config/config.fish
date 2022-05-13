@@ -1,8 +1,8 @@
 set fish_greeting                                 # Supresses fish's intro message
 
-alias ll='exa -l --color=always --group-directories-first'
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash' # Very important alias
-
+alias ll='colorls -A -l'
+alias ls='colorls -A'
 colorscript random
 
 if status is-interactive
