@@ -15,7 +15,7 @@ echo -e "\nInstalling dependencies..."
 sudo pacman --noconfirm -S -q konsole fish cmake
 
 echo -e "\nInstalling colorls"
-yay --noconfirm -S ruby-colorls
+yay --noconfirm -S ruby-colorls noto-fonts-emoji-apple
 
 echo -e "\nInstalling fonts..."
 cd fonts
