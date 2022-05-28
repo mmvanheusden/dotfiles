@@ -2,20 +2,20 @@
 
 set -e
 
-if ! [ -x "$(command -v dnf)" ]; then
-  echo 'Error: not using fedora.' >&2
-  exit 1
+if ! [ -x "$(command -v yay)" ]; then
+  echo 'ERROR: yay is not installed.'
+  echo 'Installing yay...'
+  sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && rm -rf yay
 fi
 
 echo -e "\nUpdating the system..."
-#temporarily disabled because german wifi is dogshit and i am too lazy to update my laptop
-#sudo dnf update -y
+sudo pacman -Syu
 
 echo -e "\nInstalling dependencies..."
-sudo dnf install konsole fish git make cmake cpp gem ruby-devel -y
+sudo pacman --noconfirm -S -q konsole fish cmake
 
 echo -e "\nInstalling colorls"
-gem install colorls > /dev/null
+yay --noconfirm -S ruby-colorls
 
 echo -e "\nInstalling fonts..."
 cd fonts
@@ -44,19 +44,16 @@ echo -e "\nAdding asteriks to the sudo prompt..."
 # This appends "Defaults   pwfeedback" to the sudoers file so cool asteriks are displayed when typing your password
 echo -e "\nDefaults   pwfeedback" | sudo tee -a /etc/sudoers > /dev/null
 
-echo -e "\nMaking DNF faster..."
-echo -e "\nfastestmirror=True\nmax_parallel_downloads=10\ndefaultyes=True" | sudo tee -a /etc/dnf/dnf.conf > /dev/null
 
-
-echo -e "\nCopying the fish config file..."
+echo -e "\nInitializing and copying the new fish config file..."
 touch ~/.config/fish/config.fish
 cp ./config/config.fish ~/.config/fish/config.fish
 
-echo -e "\nCopying the starship config file..."
+echo -e "\nInitializing and copying the new starship config file..."
 touch ~/.config/starship.toml
 cp ./config/starship.toml ~/.config/starship.toml
 
-echo -e "\nCopying the Konsole config file..."
+echo -e "\nInitializing and copying the new Konsole config file..."
 mkdir -p ~/.local/share/konsole/
 touch ~/.local/share/konsole/Fish.profile
 cp ./config/Fish.profile ~/.local/share/konsole/Fish.profile
