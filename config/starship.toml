@@ -37,7 +37,6 @@ $memory_usage\
 """
 
 
-
 [fill]
 symbol = "·"
 style = "bold #585858"

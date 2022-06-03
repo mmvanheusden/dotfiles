@@ -12,10 +12,10 @@ echo -e "\nUpdating the system..."
 sudo pacman -Syu
 
 echo -e "\nInstalling dependencies..."
-sudo pacman --noconfirm -S -q konsole fish cmake
+sudo pacman --needed --noconfirm -S -q konsole fish cmake
 
 echo -e "\nInstalling software"
-yay --noconfirm -S ruby-colorls noto-fonts-emoji-apple vscodium-bin jetbrains-toolbox
+yay --noconfirm --needed -S ruby-colorls noto-fonts-emoji-apple vscodium-bin jetbrains-toolbox
 
 echo -e "\nInstalling fonts..."
 cd fonts
@@ -56,5 +56,14 @@ echo -e "\nInitializing and copying the new Konsole config file..."
 mkdir -p ~/.local/share/konsole/
 touch ~/.local/share/konsole/Fish.profile
 cp ./config/Fish.profile ~/.local/share/konsole/Fish.profile
+
+read -p "Do you want to install the KDE base packages? (yes/no) " yn
+
+case $yn in 
+	yes ) echo "OK, installing the packages... This might take a while";
+  sudo pacman --needed --noconfirm -S kde-applications;;
+	no ) echo exiting...;;
+	* ) echo invalid response;;
+esac
 
 echo -e "\nPlease restart Konsole and set the fish profile as the default profile in the Konsole settings!"
