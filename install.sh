@@ -14,8 +14,8 @@ sudo pacman -Syu
 echo -e "\nInstalling dependencies..."
 sudo pacman --noconfirm -S -q konsole fish cmake
 
-echo -e "\nInstalling colorls"
-yay --noconfirm -S ruby-colorls noto-fonts-emoji-apple
+echo -e "\nInstalling software"
+yay --noconfirm -S ruby-colorls noto-fonts-emoji-apple vscodium-bin jetbrains-toolbox
 
 echo -e "\nInstalling fonts..."
 cd fonts
@@ -43,7 +43,6 @@ fish -c exit > /dev/null
 echo -e "\nAdding asteriks to the sudo prompt..."
 # This appends "Defaults   pwfeedback" to the sudoers file so cool asteriks are displayed when typing your password
 echo -e "\nDefaults   pwfeedback" | sudo tee -a /etc/sudoers > /dev/null
-
 
 echo -e "\nInitializing and copying the new fish config file..."
 touch ~/.config/fish/config.fish
