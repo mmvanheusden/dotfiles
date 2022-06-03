@@ -57,12 +57,12 @@ mkdir -p ~/.local/share/konsole/
 touch ~/.local/share/konsole/Fish.profile
 cp ./config/Fish.profile ~/.local/share/konsole/Fish.profile
 
-read -p "Do you want to install the KDE base packages? (yes/no) " yn
+read -p "Do you want to install the KDE base packages? (y/n) " yn
 
 case $yn in 
-	yes ) echo "OK, installing the packages... This might take a while";
+	y ) echo "OK, installing the packages... This might take a while";
   sudo pacman --needed --noconfirm -S kde-applications;;
-	no ) echo exiting...;;
+	n ) echo exiting...;;
 	* ) echo invalid response;;
 esac
 
