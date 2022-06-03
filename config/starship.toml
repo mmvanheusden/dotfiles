@@ -1,4 +1,4 @@
-right_format = """
+right_format = """\
 $cmd_duration\
 $java\
 $python\
@@ -30,7 +30,7 @@ $username\
 show_always = true
 style_user = "bg:#33658A"
 style_root = "bg:#33658A"
-format = '[ 🗿 $user \$ ](fg:white $style)'
+format = '[ 🗿 $user ](fg:white $style)'
 
 [directory]
 style = "bg:#FF9248 fg:black"
