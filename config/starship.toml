@@ -1,17 +1,17 @@
-right_format = """\
-$cmd_duration\
-$java\
-$python\
-$nodejs\
-$rust\
-$git_metrics\
-[](bright-green)\
-$memory_usage
-[](bright-green)
-"""
+#right_format = """\
+#$cmd_duration\
+#$java\
+#$python\
+#$nodejs\
+#$rust\
+#$git_metrics\
+#[](bright-green)\
+#$memory_usage
+#[](bright-green)
+#"""
 
 format = """\
-[╭─](#585858)\
+[╭─](bold #585858)\
 [](#33658A)\
 [\uf120 ](bg:#33658A)\
 [](bg:#FF9248 fg:#33658A)\
@@ -22,9 +22,26 @@ $git_branch\
 $git_status\
 [](fg:#FFEB95 bg:#33658A)\
 $username\
-[ ](fg:#33658A)
-[╰─ ](#585858)
+[ ](fg:#33658A)\
+$fill \
+$cmd_duration\
+$java\
+$python\
+$nodejs\
+$rust\
+$git_metrics\
+[](bright-green)\
+$memory_usage\
+[](bright-green)
+[╰─ ](bold #585858)
 """
+
+
+
+[fill]
+symbol = "·"
+style = "bold #585858"
+
 
 [username]
 show_always = true
