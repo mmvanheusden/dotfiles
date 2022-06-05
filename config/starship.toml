@@ -80,12 +80,12 @@ format = '[[($all_status$ahead_behind )](bg:#FFEB95 fg:#000000)]($style)'
 [nodejs]
 symbol = ""
 style = "bg:#86BBD8"
-format = '[[](fg:#86BBD8)[ $symbol ($version) ](bg:#86BBD8)[ ](fg:#86BBD8)]($style)'
+format = '[[](fg:#86BBD8)[$symbol ($version) ](bg:#86BBD8)[ ](fg:#86BBD8)]($style)'
 
 [rust]
 symbol = ""
 style = "bg:#AF400E"
-format = '[[](fg:#AF400E)[ $symbol ($version) ](bg:#AF400E)[ ](fg:#AF400E)]($style)'
+format = '[[](fg:#AF400E)[$symbol ($version) ](bg:#AF400E)[ ](fg:#AF400E)]($style)'
 
 [cmd_duration]
 min_time = 1000
@@ -96,7 +96,6 @@ format = "[[[](fg:#52A2DA) $duration](fg:black bg:#52A2DA) ](fg:#52A2DA
 [memory_usage]
 disabled = false
 threshold = 0
-symbol = " "
 format = "[ $ram](fg:black bg:bright-green)"
 
 [java]
