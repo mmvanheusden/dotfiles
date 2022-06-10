@@ -15,7 +15,7 @@ echo -e "\nInstalling dependencies..."
 sudo pacman --needed --noconfirm -S -q konsole fish cmake
 
 echo -e "\nInstalling software"
-yay --noconfirm --needed -S ruby-colorls noto-fonts-emoji-apple vscodium-bin jetbrains-toolbox
+yay --noconfirm --needed -S ruby-colorls noto-fonts-emoji-apple vscodium-bin jetbrains-toolbox polymc-bin
 
 echo -e "\nInstalling fonts..."
 cd fonts
