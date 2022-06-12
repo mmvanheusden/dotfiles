@@ -57,6 +57,9 @@ mkdir -p ~/.local/share/konsole/
 touch ~/.local/share/konsole/Fish.profile
 cp ./config/Fish.profile ~/.local/share/konsole/Fish.profile
 
+echo -e "\Copying the Konsole color scheme..."
+cp ./config/KoolDark.colorscheme ~/.local/share/konsole/KoolDark.colorscheme
+
 read -p "Do you want to install the KDE base packages? (yes/no) " yn
 
 case $yn in 
@@ -66,4 +69,5 @@ case $yn in
 	* ) echo invalid response;;
 esac
 
+tput bold
 echo -e "\nPlease restart Konsole and set the fish profile as the default profile in the Konsole settings!"

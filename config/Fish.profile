@@ -1,5 +1,5 @@
 [Appearance]
-ColorScheme=Breeze
+ColorScheme=KoolDark
 Font=FiraMono Nerd Font,11,-1,5,50,0,0,0,0,0
 
 [General]
