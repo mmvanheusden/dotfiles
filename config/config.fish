@@ -10,6 +10,7 @@ if status is-interactive
 end
 
 starship init fish | source
+starship completions fish | source
 # Colorscheme: Tomorrow Night
 set -U fish_color_normal normal
 set -U fish_color_command b294bb
