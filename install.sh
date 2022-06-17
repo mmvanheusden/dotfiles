@@ -15,7 +15,7 @@ echo -e "\nInstalling dependencies..."
 sudo pacman --needed --noconfirm -S -q konsole fish cmake
 
 echo -e "\nInstalling software"
-yay --noconfirm --needed -S ruby-colorls noto-fonts-emoji-apple vscodium-bin jetbrains-toolbox polymc-bin flatpak
+yay --noconfirm --needed -S ruby-colorls noto-fonts-emoji-apple
 
 echo -e "\nInstalling fonts..."
 cd fonts
@@ -69,5 +69,16 @@ case $yn in
 	* ) echo invalid response;;
 esac
 
+read -p "Do you want to install misc packages? (yes/no) " yn
+
+case $yn in 
+	yes ) echo "OK, installing the packages... This might take a while";
+  yay --needed --noconfirm -S polymc-bin vscodium-bin jetbrains-toolbox flatpak python3 python-pip github-cli jdk8-openjdk;;
+	no ) echo exiting...;;
+	* ) echo invalid response;;
+esac
+
+echo "Cleaning up yay cache"
+yay --noconfirm --clean
 tput bold
 echo -e "\nPlease restart Konsole and set the fish profile as the default profile in the Konsole settings!"
