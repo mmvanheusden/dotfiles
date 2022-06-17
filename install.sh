@@ -12,7 +12,7 @@ echo -e "\nUpdating the system..."
 sudo pacman -Syu
 
 echo -e "\nInstalling dependencies..."
-sudo pacman --needed --noconfirm -S -q konsole fish cmake
+sudo pacman --needed --noconfirm -S -q konsole fish cmake man
 
 echo -e "\nInstalling software"
 yay --noconfirm --needed -S ruby-colorls noto-fonts-emoji-apple lolcat
