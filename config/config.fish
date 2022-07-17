@@ -210,3 +210,5 @@ alias clear='echo -en "\x1b[2J\x1b[1;1H" ; echo; echo; seq 1 (tput cols) | sort 
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+alias snapss='adb exec-out screencap -p > ~/Documents/projecten/.plaatjes/s/out.png && gwenview ~/Documents/projecten/.plaatjes/s/out.png'
+
