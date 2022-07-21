@@ -9,4 +9,4 @@ Please run the `install.sh` script using `bash`
 After installing, open/restart Konsole, and select the Fish profile.
 
 
-It is recommended to also set the Fish profile as the default profile
+It is recommended to also set the Fish profile as the default profile.
