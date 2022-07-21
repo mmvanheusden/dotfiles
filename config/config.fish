@@ -204,7 +204,7 @@ end
 ### ALIASES ###
 # \x1b[2J   <- clears tty
 # \x1b[1;1H <- goes to (1, 1) (start)
-alias clear='echo -en "\x1b[2J\x1b[1;1H" ; echo; echo; seq 1 (tput cols) | sort -R | spark | lolcat; echo; echo'
+alias clear='echo -en "\x1b[2J\x1b[1;1H";seq 1 (tput cols) | sort -R | spark | lolcat'
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
