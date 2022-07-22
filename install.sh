@@ -57,7 +57,7 @@ mkdir -p ~/.local/share/konsole/
 touch ~/.local/share/konsole/Fish.profile
 cp ./config/Fish.profile ~/.local/share/konsole/Fish.profile
 
-echo -e "\Copying the Konsole color scheme..."
+echo -e "\nCopying the Konsole color scheme..."
 cp ./config/KoolDark.colorscheme ~/.local/share/konsole/KoolDark.colorscheme
 
 read -p "Do you want to install the KDE base packages? (yes/no) " yn
